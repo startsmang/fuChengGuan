@@ -1,21 +1,20 @@
 import pytest
-from base.base import base
+from selenium.webdriver.common.by import By
+
+from base.base import PageBase
 from config import config
 from page.login_page import login_page
-class Test_login(login_page):
+class test_login(login_page):
+    def __init__(self):
+        login_page.__init__(self)
+        PageBase.__init__(self)
+        super().__init__()
 
-    def open_browser(self):
-        self.driver = config.config()
-        self.driver.get("https://jxh.zx1026.com/")
-        self.driver.maximize_window()
-    def click_quxiao(self):
-            self.locator_element(login_page.quxiao_loc)
-    def send_username(self):
-            self.locator_element(login_page.username_loc).
-    def send_password(self):
-            self.send_keys(login_page.password_loc, "FJzx@2019.")
-    def click_button(self):
-            self.click(login_page.login_loc)
+def test_login_fuChengGuan1():
+        p1 = login_page()
+        p1.test_login_fuChengGuan()
+
+
 
 if __name__ == '__main__':
     pytest.main(["-vs", "test_login.py"])

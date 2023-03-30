@@ -13,7 +13,7 @@ from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.touch_actions import TouchActions
 from selenium.webdriver.common.keys import Keys
 from config import config
-class base():
+class PageBase():
     def __init__(self):
         global driver
         self.driver = config.config()
@@ -30,3 +30,4 @@ class base():
         self.locator_element(loc).send_keys(text)
     def open_browser(self):
         self.driver.get('https://jxh.zx1026.com/')
+        self.driver.maximize_window()
