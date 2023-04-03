@@ -20,6 +20,7 @@ class PageBase():
         driver = self.driver
 # 封装一个方法，用于便捷的定位元素的关键词
     def locator_element(self,loc):
+
         return self.driver.find_element(*loc)
 
 #  封装一个方法，用于便捷的定位到元素，并进行点击操作
