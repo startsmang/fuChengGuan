@@ -13,19 +13,20 @@ from selenium.webdriver.common.touch_actions import TouchActions
 from selenium.webdriver.common.keys import Keys
 from config import config
 from base.base import PageBase
+from page.login_page import login_page
 
-class Generate_Corridor_Tasks_Page(PageBase,):
-    def __init__(self):
-        global driver
-        self.driver = config.config()
-        driver = self.driver
+
+class Generate_Corridor_Tasks_Page(PageBase):
     # 定位器
-    apply_loc = (By.XPATH , '//*[@id="app"]/div/div[2]/div/div/div[2]')
+    apply_loc = (By.XPATH , '//*[@id="app"]/div/div[2]/div/div/div[2]/span')
     Sanitation_loc = (By.XPATH , '//*[@id="app"]/div/div[2]/div/div/div[6]/div[1]/div[2]/div[3]/div')
     roadr_Tasks_loc = (By.XPATH , '//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[12]/li/ul/div[2]/li/div')
     create_road_loc = (By.XPATH , '//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[12]/li/ul/div[2]/li/ul/div[2]/a/li')
 
     def test_create_road(self):
+        p1 = login_page()
+        p1.test_login_fuChengGuan()
+        sleep(1)
         self.click(Generate_Corridor_Tasks_Page.apply_loc)
         sleep(1)
         self.click(Generate_Corridor_Tasks_Page.Sanitation_loc)
@@ -34,3 +35,4 @@ class Generate_Corridor_Tasks_Page(PageBase,):
         sleep(2)
         self.click(Generate_Corridor_Tasks_Page.create_road_loc)
         sleep(3)
+        self.driver.quit()

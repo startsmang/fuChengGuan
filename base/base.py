@@ -20,7 +20,6 @@ class PageBase():
         driver = self.driver
 # 封装一个方法，用于便捷的定位元素的关键词
     def locator_element(self,loc):
-
         return self.driver.find_element(*loc)
 
 #  封装一个方法，用于便捷的定位到元素，并进行点击操作
@@ -32,3 +31,14 @@ class PageBase():
     def open_browser(self):
         self.driver.get('https://jxh.zx1026.com/')
         self.driver.maximize_window()
+# 进入框架
+    def goto_frame(self,frame_name):
+        self.driver.switch_to.frame(frame_name)
+# 退出框架
+    def quit_frame(self):
+        self.driver.switch_to.default_content()
+# 封装选中下拉框
+    def choice_select(self,loc,value):
+         sel = Select(self.locator_element(loc))
+         sel .select_by_value(value)
+
