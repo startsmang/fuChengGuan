@@ -5,13 +5,18 @@ from base.base import PageBase
 from config import config
 from page.login_page import login_page
 
-class Test_login(login_page,):
-    pass
+class Test_login(login_page):
+    def setup(self):
+        self.login_page = login_page()
+    def teardown(self):
+        # self.login_page.quit()
+        pass
+
 
 
 def test_login_fuChengGuan1():
         p1 = login_page()
-        p1.test_login_fuChengGuan()
+        p1.login()
 
 
 

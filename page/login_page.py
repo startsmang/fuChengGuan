@@ -11,23 +11,27 @@ class login_page(PageBase):
     login_loc = (By.XPATH , '//*[@id="app"]/div/section[2]/form[1]/button')
     assert_loc = (By.XPATH , '//*[@id="app"]/div/div[2]/div/div/div[5]/span')
     # 页面的动作
-    def test_login_fuChengGuan(self):
+    def login(self):
         self.open_browser()
         time.sleep(1)
         self.locator_element(login_page.quxiao_loc).click()
         time.sleep(1)
         self.send_keys(login_page.username_loc,"admin")
-        time.sleep(1)
+
         self.send_keys(login_page.password_loc,"FJzx@2019.")
-        time.sleep(1)
+
         self.click(login_page.login_loc)
         time.sleep(5)
-        assert_texdt = self.locator_element(login_page.assert_loc).text
+        self.assert_texdt = self.locator_element(login_page.assert_loc).text
+
     def assert_01(self):
-        if self.assert_texdt in "超级管理员":
-            print("登录成功")
-        else:
-            print("登录失败")
+            if self.assert_texdt in "超级管理员":
+                print("登录成功")
+            else:
+                print("登录失败")
+    # def quit(self):
+    #     self.driver.quit()
+
 
 
 
